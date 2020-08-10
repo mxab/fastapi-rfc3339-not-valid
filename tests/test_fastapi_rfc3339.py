@@ -24,3 +24,7 @@ def test_rfc3339():
     assert response.status_code == 200
     assert validate_rfc3339(response.json()["datetime1"])
     assert validate_rfc3339(response.json()["datetime2"])
+
+
+def test_format():
+    assert app.openapi()["components"]["schemas"]["Foo"]["properties"]["datetime1"]["format"] == "date-time"
